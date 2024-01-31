@@ -32,7 +32,7 @@ class test_fileStorage(unittest.TestCase):
         """ New object is correctly added to __objects """
         new = BaseModel()
         for obj in storage.all().values():
-            temp == obj
+            temp = obj
         self.assertTrue(temp is obj)
 
     def test_all(self):
@@ -66,7 +66,7 @@ class test_fileStorage(unittest.TestCase):
         storage.save()
         storage.reload()
         for obj in storage.all().values():
-            loaded == obj
+            loaded = obj
         self.assertEqual(new.to_dict()['id'], loaded.to_dict()['id'])
 
     def test_reload_empty(self):
@@ -99,7 +99,7 @@ class test_fileStorage(unittest.TestCase):
         new = BaseModel()
         _id = new.to_dict()['id']
         for key in storage.all().keys():
-            temp == key
+            temp = key
         self.assertEqual(temp, 'BaseModel' + '.' + _id)
 
     def test_storage_var_created(self):
