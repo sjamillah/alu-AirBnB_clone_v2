@@ -8,12 +8,12 @@ from models import storage_type
 
 if storage_type == 'db':
     place_amenity = Table('place_amenity', Base.metadata,
-                      Column('place_id', String(60),
-                             ForeignKey('places.id'),
-                             primary_key=True, nullable=False),
-                      Column('amenity_id', String(60),
-                             ForeignKey('amenities.id'),
-                             primary_key=True, nullable=False))
+                          Column('place_id', String(60),
+                                 ForeignKey('places.id'),
+                                 primary_key=True, nullable=False),
+                          Column('amenity_id', String(60),
+                                 ForeignKey('amenities.id'),
+                                 primary_key=True, nullable=False))
 
 
 class Place(BaseModel, Base):
@@ -21,9 +21,11 @@ class Place(BaseModel, Base):
     __tablename__ = 'places'
 
     if storage_type == 'db':
-        city_id = Column(String(60), ForeignKey("cities.id", ondelete="CASCADE"),
+        city_id = Column(String(60),
+                         ForeignKey("cities.id", ondelete="CASCADE"),
                          nullable=False)
-        user_id = Column(String(60), ForeignKey("users.id", ondelete="CASCADE"),
+        user_id = Column(String(60),
+                         ForeignKey("users.id", ondelete="CASCADE"),
                          nullable=False)
         name = Column(String(128), nullable=False)
         description = Column(String(1024), nullable=True)
@@ -34,12 +36,12 @@ class Place(BaseModel, Base):
         latitude = Column(Float, nullable=True)
         longitude = Column(Float, nullable=True)
         reviews = relationship('Review',
-                                backref='place',
-                                cascade="all, delete")
+                               backref='place',
+                               cascade="all, delete")
         amenities = relationship('Amenity',
-                                  secondary=place_amenity,
-                                  viewonly=False,
-                                  back_populates='place_amenities')
+                                 secondary=place_amenity,
+                                 viewonly=False,
+                                 back_populates='place_amenities')
 
     else:
         city_id = ""
