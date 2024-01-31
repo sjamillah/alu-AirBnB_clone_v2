@@ -9,12 +9,12 @@ from models import storage_type
 
 class State(BaseModel, Base):
     """ State class """
-    __tablename__ = 'state'
+    __tablename__ = 'states'
 
     if storage_type == "db":
         name = Column(String(128), nullable=False)
         cities = relationship('City', backref='state',
-                              cascade='all, delete-orphan')
+                              cascade='all, delete')
 
     else:
         name = ""
