@@ -147,7 +147,7 @@ class HBNBCommand(cmd.Cmd):
                 except ValueError:
                     continue
 
-            if value is not None and value != "" and hassattr(
+            if value is not None and value != "" and hasattr(
                     new_instance, key):
                 setattr(new_instance, key, value)
 
