@@ -8,9 +8,12 @@ fs = FileStorage()
 
 # All States
 all_states = fs.all(State)
-print("All States: {}".format(len(all_states.keys())))
-for state_key in all_states.keys():
-    print(all_states[state_key])
+if all_states is not None:
+    print("All States: {}".format(len(all_states.keys())))
+    for state_key in all_states.keys():
+        print(all_states[state_key])
+else:
+    print("Error: fs.all(State) returned None")
 
 # Create a new State
 new_state = State()
@@ -21,9 +24,12 @@ print("New State: {}".format(new_state))
 
 # All States
 all_states = fs.all(State)
-print("All States: {}".format(len(all_states.keys())))
-for state_key in all_states.keys():
-    print(all_states[state_key])
+if all_states is not None:
+    print("All States: {}".format(len(all_states.keys())))
+    for state_key in all_states.keys():
+        print(all_states[state_key])
+else:
+    print("Error: fs.all(State) returned None")
 
 # Create another State
 another_state = State()
@@ -34,15 +40,21 @@ print("Another State: {}".format(another_state))
 
 # All States
 all_states = fs.all(State)
-print("All States: {}".format(len(all_states.keys())))
-for state_key in all_states.keys():
-    print(all_states[state_key])        
+if all_states is not None:
+    print("All States: {}".format(len(all_states.keys())))
+    for state_key in all_states.keys():
+        print(all_states[state_key])
+else:
+    print("Error: fs.all(State) returned None")
 
 # Delete the new State
 fs.delete(new_state)
 
 # All States
 all_states = fs.all(State)
-print("All States: {}".format(len(all_states.keys())))
-for state_key in all_states.keys():
-    print(all_states[state_key])
+if all_states is not None:
+    print("All States: {}".format(len(all_states.keys())))
+    for state_key in all_states.keys():
+        print(all_states[state_key])
+else:
+    print("Error: fs.all(State) returned None")
