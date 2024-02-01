@@ -12,6 +12,8 @@ import os
 
 # skip these test if the storage is not db
 storage_type = os.getenv('HBNB_TYPE_STORAGE')
+
+
 @unittest.skipIf(storage_type != 'db', "skip if not fs")
 class TestDBStorage(unittest.TestCase):
     """DB Storage test"""
