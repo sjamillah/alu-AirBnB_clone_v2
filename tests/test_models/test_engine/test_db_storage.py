@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import unittest
-import models
+from models.base_model import BaseModel, Base
 from models.user import User
 from models.review import Review
 from models.amenity import Amenity
