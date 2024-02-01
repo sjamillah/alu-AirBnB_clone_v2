@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import unittest
+import os
+import sys
 import MySQLdb
 from models.base_model import BaseModel, Base
 from models.user import User
@@ -8,7 +10,6 @@ from models.amenity import Amenity
 from models.state import State
 from models.place import Place
 from models.city import City
-import os
 
 
 # skip these test if the storage is not db
