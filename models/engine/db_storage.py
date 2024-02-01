@@ -14,12 +14,11 @@ from models.review import Review
 
 class DBStorage:
     """The new database storage class"""
-    _engine = None
-    _session = None
+    __engine = None
+    __session = None
 
     def __init__(self):
         """Initialize the DBStorage class"""
-        dev_mode = user = password = host = db = ""
 
         user = os.getenv('HBNB_MYSQL_USER')
         password = os.getenv('HBNB_MYSQL_PWD')
@@ -27,14 +26,14 @@ class DBStorage:
         db = os.getenv('HBNB_MYSQL_DB')
         dev_mode = os.getenv('HBNB_ENV')
 
-        self._engine = create_engine('mysql+mysqldb://{}:{}@{}:3306/{}'
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}:3306/{}'
                                      .format(user,
                                              password,
                                              host,
                                              db),
                                      pool_pre_ping=True)
         if dev_mode == 'test':
-            Base.metadata.drop_all(self._engine)
+            Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
         """Returns a dictionary of all objects"""
@@ -54,22 +53,16 @@ class DBStorage:
     def new(self, obj):
         """Adds a new object to the database"""
         if obj is not None:
-            try:
-                self.__session.add(obj)
-                self.__session.flush()
-                self.__session.refresh(obj)
-            except Exception as err:
-                self.__session.rollback()
-                raise err
+            self.__session.add(obj)
 
     def save(self):
         """Saves all changes to the database"""
-        self._session.commit()
+        self.__session.commit()
 
     def delete(self, obj=None):
         """Deletes an object from the database"""
         if obj is not None:
-            self._session.delete(obj)
+            self.__session.delete(obj)
 
     def reload(self):
         """Reloads all tables"""
@@ -77,8 +70,8 @@ class DBStorage:
         session_factory = sessionmaker(bind=self._engine,
                                        expire_on_commit=False)
         Session = scoped_session(session_factory)
-        self._session = Session()
+        self.__session = Session()
 
     def close(self):
         """Close the session"""
-        self._session.close()
+        self.__session.close()
