@@ -218,37 +218,37 @@ class TestHBNBcmdCreateDB(unittest.TestCase):
             CLI.do_create('User '
                           'email="bettyholbertn@gmail.com" '
                           'password="apass" '
-OBOBOB                          'first_name="a_name" '
-OB                          'last_name="a_last_name" ')
+                          'first_name="a_name" '
+                          'last_name="a_last_name" ')
         cls.test_user_id = std_out.getvalue()[:-1]
-OB        with redirect_streams() as (std_out, std_err):
-OB            CLI.do_create('City '
-OB                          'state_id="{}" '
-OB                          'name="SanFrancisco"'.format(cls.test_state_id))
+        with redirect_streams() as (std_out, std_err):
+            CLI.do_create('City '
+                          'state_id="{}" '
+                          'name="SanFrancisco"'.format(cls.test_state_id))
         cls.test_city_id = std_out.getvalue()[:-1]
-OBOB        with redirect_streams() as (std_out, std_err):
+        with redirect_streams() as (std_out, std_err):
             CLI.do_create('Place '
                           'city_id="{}" '
-OBOB                          'user_id="{}" '
-OB                          'name="A_humble_home" '
-OB                          'number_rooms=4 '
-OBOB                          'number_bathrooms=2 '
+                          'user_id="{}" '
+                          'name="A_humble_home" '
+                          'number_rooms=4 '
+                          'number_bathrooms=2 '
                           'max_guest=10'.format(cls.test_city_id,
                                                 cls.test_user_id))
-OB        cls.test_place_id = std_out.getvalue()[:-1]
+        cls.test_place_id = std_out.getvalue()[:-1]
         print('... done creating')
-OB        storage_objs = storage.all()
-OB        for v in storage_objs.values():
+       storage_objs = storage.all()
+        for v in storage_objs.values():
             if v.id == cls.test_place_id:
                 cls.obj = v
 
-OB    def setUp(self):
+    def setUp(self):
         """initializes new HBNBCommand instance for each test"""
         self.CLI = TestHBNBcmdCreateDB.cli
         self.obj = TestHBNBcmdCreateDB.obj
         self.state_id = TestHBNBcmdCreateDB.test_state_id
         self.user_id = TestHBNBcmdCreateDB.test_user_id
-OB        self.city_id = TestHBNBcmdCreateDB.test_city_id
+        self.city_id = TestHBNBcmdCreateDB.test_city_id
         self.place_id = TestHBNBcmdCreateDB.test_place_id
 
     def test_instantiation(self):
