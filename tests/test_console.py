@@ -237,7 +237,7 @@ class TestHBNBcmdCreateDB(unittest.TestCase):
                                                 cls.test_user_id))
         cls.test_place_id = std_out.getvalue()[:-1]
         print('... done creating')
-       storage_objs = storage.all()
+        storage_objs = storage.all()
         for v in storage_objs.values():
             if v.id == cls.test_place_id:
                 cls.obj = v
