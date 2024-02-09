@@ -352,15 +352,15 @@ class TestCountGet(unittest.TestCase):
         models.storage.delete_all()
         cls.s = models.state.State(name="California")
         cls.c = models.city.City(state_id=cls.s.id,
-                            name="San Francisco")
+                                 name="San Francisco")
         cls.u = models.user.User(email="betty@holbertonschool.com",
-                            password="pwd")
+                                 password="pwd")
         cls.p1 = models.place.Place(user_id=cls.u.id,
-                              city_id=cls.c.id,
-                              name="a house")
+                                    city_id=cls.c.id,
+                                    name="a house")
         cls.p2 = models.place.Place(user_id=cls.u.id,
-                              city_id=cls.c.id,
-                              name="a house two")
+                                    city_id=cls.c.id,
+                                    name="a house two")
         cls.a1 = models.amenity.Amenity(name="Wifi")
         cls.a2 = models.amenity.Amenity(name="Cable")
         cls.a3 = models.amenity.Amenity(name="Bucket Shower")
