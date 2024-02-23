@@ -2,9 +2,10 @@
 
 """Script that starts a Flask web apllication"""
 
-from flask import Flask, render_template
 from models import storage
 from models.state import State
+from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
