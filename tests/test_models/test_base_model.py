@@ -6,6 +6,10 @@ import datetime
 from uuid import UUID
 import json
 import os
+from os import environ
+
+
+STORAGE_TYPE = environ.get('HBNB_TYPE_STORAGE')
 
 
 class test_basemodel(unittest.TestCase):
@@ -24,7 +28,7 @@ class test_basemodel(unittest.TestCase):
     def tearDown(self):
         try:
             os.remove('file.json')
-        except:
+        except Exception:
             pass
 
     def test_default(self):
